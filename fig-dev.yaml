@@ -1,0 +1,18 @@
+webdev:
+  image: durenworks/laravel5-dev:0.4.14
+  volumes:
+   - .:/srv/web
+  working_dir: /srv/web
+  hostname: web-dev
+  ports:
+   - "80:80"
+  links:
+   - dbdev:db
+  privileged: true
+dbdev:
+  image: mariadb:10.1
+  hostname: db-dev
+  environment:
+   - MYSQL_ROOT_PASSWORD=password1
+  ports:
+   - "3306:3306"
